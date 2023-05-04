@@ -1,7 +1,16 @@
 import "./globals.css";
-import { Inter } from "@next/font/google";
+import { Poppins, Calistoga } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  weight: ["400", "500", "600"],
+  subsets: ["latin"],
+});
+
+const calistoga = Calistoga({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-header",
+});
 
 export default function RootLayout({
   children,
@@ -11,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head />
-      <body className={`${inter.className} bg-red-600`}>{children}</body>
+      <body className={`${poppins.className} ${calistoga.variable} text-dark`}>{children}</body>
     </html>
   );
 }

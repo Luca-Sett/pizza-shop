@@ -8,11 +8,17 @@ module.exports = {
       lg: "1024px",
       xl: "1440px",
     },
-    extend: {
-      boxShadow: {
-        "button-sm": "0 0 18px 1px",
-        "button-lg": "0 0 18px 4px",
-      },
+    colors: {
+      "off-white": "#F1F2F3",
+      white: "#FFFFFF",
+      dark: "#181818",
+      black: "#000000",
+      "red-fg": "#F76E6E",
+      "red-bg": "#F9D2D2",
+      red: "#E04646",
+    },
+    fontFamily: {
+      header: "var(--font-header)",
     },
   },
   plugins: [],
