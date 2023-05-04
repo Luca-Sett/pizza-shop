@@ -8,9 +8,9 @@ export default function BasketItem() {
           <span>Size</span>
 
           <div className="flex">
-            <div className="px-2 py-[3px] rounded">10"</div>
-            <div className="px-2 py-[3px] bg-black/10 rounded">12"</div>
-            <div className="px-2 py-[3px] rounded">14"</div>
+            <div className="px-2 py-[3px] rounded">10&rdquo;</div>
+            <div className="px-2 py-[3px] bg-black/10 rounded">12&rdquo;</div>
+            <div className="px-2 py-[3px] rounded">14&rdquo;</div>
           </div>
         </div>
 
