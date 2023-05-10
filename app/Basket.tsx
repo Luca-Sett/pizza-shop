@@ -2,7 +2,7 @@ import BasketItem from "@/components/BasketItem";
 
 export default function Basket() {
   return (
-    <aside className="row-span-2 pt-[51px] px-10 flex flex-col gap-8">
+    <aside className="row-span-2 pt-[67px] px-10 flex flex-col gap-8">
       <div className="flex flex-col gap-1">
         <div className="bg-dark h-0.5 rounded"></div>
         <h2 className="uppercase font-semibold text-center">Basket</h2>
