@@ -16,7 +16,7 @@ const pizzas: Pizza[] = Array(10)
     isHot: false,
   }));
 
-const parentVariants = {
+const staggerVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1 } },
 };
@@ -34,7 +34,7 @@ export default function PizzaGrid() {
     <>
       <div className="max-w-6xl mx-auto">
         <motion.div
-          variants={parentVariants}
+          variants={staggerVariants}
           initial="hidden"
           animate="visible"
           className="grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-5"
