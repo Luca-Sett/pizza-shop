@@ -1,12 +1,8 @@
 "use client";
 
-import { Pizza } from "@/lib/types";
+import { PizzaGridItem } from "@/lib/types";
 import { motion } from "framer-motion";
-
-const gpb = new Intl.NumberFormat("en-gb", {
-  style: "currency",
-  currency: "GBP",
-});
+import { gpb } from "@/lib/utils";
 
 const variants = {
   hidden: { opacity: 0, scale: 0.8, y: 16 },
@@ -18,7 +14,7 @@ export default function MenuItem({
   i,
   onClick,
 }: {
-  pizza: Pizza;
+  pizza: PizzaGridItem;
   i: number;
   onClick: () => void;
 }) {
@@ -32,7 +28,7 @@ export default function MenuItem({
       onClick={onClick}
     >
       <img
-        src={`/${pizza.image}`}
+        src={`/margherita.webp`}
         alt={pizza.name}
         width="320"
         height="221"
@@ -49,16 +45,18 @@ export default function MenuItem({
         </div>
 
         <div className="flex flex-wrap gap-1.5">
-          {pizza.isVegetarian && (
-            <span className="font-semibold text-[0.6875rem] uppercase rounded px-1.5 py-0.5 bg-green-bg text-green-fg">
-              Vegetarian
+          {pizza.categories.map((category) => (
+            <span
+              key={category._id}
+              style={{
+                backgroundColor: category.colourBg,
+                color: category.colourFg,
+              }}
+              className="font-semibold text-[0.6875rem] uppercase rounded px-1.5 py-0.5"
+            >
+              {category.name}
             </span>
-          )}
-          {pizza.isHot && (
-            <span className="font-semibold text-[0.6875rem] uppercase rounded px-1.5 py-0.5 bg-red-bg text-red-fg">
-              Hot
-            </span>
-          )}
+          ))}
         </div>
       </div>
     </motion.button>

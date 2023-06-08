@@ -1,31 +1,21 @@
 "use client";
 
 import MenuItem from "@/components/MenuItem";
-import { Pizza } from "@/lib/types";
+import { PizzaGridItem } from "@/lib/types";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import PizzaDetails from "./PizzaDetails";
-
-const pizzas: Pizza[] = Array(10)
-  .fill(0)
-  .map((_, i) => ({
-    name: `Margherita ${i}`,
-    price: 5.5,
-    image: "margherita.webp",
-    isVegetarian: true,
-    isHot: false,
-  }));
 
 const staggerVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
-export default function PizzaGrid() {
-  const [activePizza, setActivePizza] = useState<Pizza | null>(null);
+export default function PizzaGrid({ pizzas }: { pizzas: PizzaGridItem[] }) {
+  const [activePizza, setActivePizza] = useState<PizzaGridItem | null>(null);
   const [showDialog, setShowDialog] = useState(false);
 
-  const toggleDialog = (pizza: Pizza) => {
+  const toggleDialog = (pizza: PizzaGridItem) => {
     setActivePizza(pizza);
     setShowDialog(!showDialog);
   };
@@ -52,7 +42,7 @@ export default function PizzaGrid() {
 
       <PizzaDetails
         show={showDialog}
-        pizza={activePizza}
+        pizzaId={activePizza?._id}
         onClose={() => setShowDialog(!showDialog)}
       />
     </>

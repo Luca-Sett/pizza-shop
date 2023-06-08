@@ -1,8 +1,9 @@
+import { Suspense } from "react";
 import Basket from "./Basket";
 import Logo from "./Logo";
-import PizzaGrid from "./PizzaGrid";
+import PizzaGridWrapper from "./PizzaGridWrapper";
 
-export default function Home() {
+export default async function Home() {
   return (
     <div className="grid md:grid-cols-[1fr_360px]">
       <div className="overflow-auto h-screen flex flex-col">
@@ -10,7 +11,11 @@ export default function Home() {
           <Logo />
         </header>
         <main className="bg-off-white px-10 pb-[67px] grow">
-          <PizzaGrid />
+          <Suspense
+            fallback={<div className="text-center">Fetching the pizzas...</div>}
+          >
+            <PizzaGridWrapper />
+          </Suspense>
         </main>
       </div>
 

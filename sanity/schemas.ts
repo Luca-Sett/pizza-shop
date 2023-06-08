@@ -43,6 +43,16 @@ export const category = defineType({
       title: "Name",
       type: "string",
     }),
+    defineField({
+      name: "colourBg",
+      title: "Background Colour",
+      type: "string",
+    }),
+    defineField({
+      name: "colourFg",
+      title: "Foreground Colour",
+      type: "string",
+    }),
   ],
 });
 
@@ -57,10 +67,10 @@ export const ingredients = defineType({
       type: "string",
     }),
     defineField({
-      name: "categories",
-      title: "Categories",
-      type: "array",
-      of: [{ type: "reference", to: { type: "category" } }],
+      name: "basePrice",
+      title: "Base Price",
+      type: "number",
+      initialValue: 0.1,
     }),
   ],
 });
@@ -73,6 +83,11 @@ export const pizzaSizes = defineType({
     defineField({
       name: "size",
       title: "Size",
+      type: "number",
+    }),
+    defineField({
+      name: "basePrice",
+      title: "Base Price",
       type: "number",
     }),
   ],
