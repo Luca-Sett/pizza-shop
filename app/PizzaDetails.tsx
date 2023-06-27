@@ -6,6 +6,7 @@ import { Fragment, useContext, useEffect, useState } from "react";
 import { Pizza } from "@/lib/types";
 import { gpb } from "@/lib/utils";
 import { BasketContext } from "./Provider";
+import Image from "next/image";
 
 let id = 0;
 
@@ -59,8 +60,8 @@ export default function PizzaDetails({
           <Dialog.Panel className="fixed inset-0 grid place-items-center">
             <div className="w-full max-w-md">
               <div className="flex flex-col gap-4 bg-white rounded-2xl p-6 m-4 max-h-[calc(100dvh-2rem)] overflow-auto">
-                <img
-                  src={`/margherita.webp`}
+                <Image
+                  src="/margherita.webp"
                   alt={pizza.name}
                   width="320"
                   height="221"

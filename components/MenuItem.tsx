@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { gpb } from "@/lib/utils";
 import { Pizza } from "@/lib/types";
+import Image from "next/image";
 
 const variants = {
   hidden: { opacity: 0, scale: 0.8, y: 16 },
@@ -12,9 +13,11 @@ const variants = {
 export default function MenuItem({
   pizza,
   onClick,
+  isPriorityImage,
 }: {
   pizza: Pizza;
   onClick: () => void;
+  isPriorityImage: boolean;
 }) {
   return (
     <motion.button
@@ -25,11 +28,12 @@ export default function MenuItem({
       animate={{ scale: 1 }}
       onClick={onClick}
     >
-      <img
-        src={`/margherita.webp`}
+      <Image
+        src="/margherita.webp"
         alt={pizza.name}
         width="320"
         height="221"
+        priority={isPriorityImage}
         className="rounded-lg mb-3 w-full"
       />
 

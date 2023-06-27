@@ -19,7 +19,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head />
+      <head>
+        <title>Luca's Pizzeria</title>
+        <meta
+          name="description"
+          content="Welcome to Luca's Pizzeria, the Best Pizza Ever! Order for collection or delivery here."
+        />
+      </head>
       <body
         className={`${poppins.className} ${calistoga.variable} text-dark bg-off-white selection:bg-red-fg/25`}
       >

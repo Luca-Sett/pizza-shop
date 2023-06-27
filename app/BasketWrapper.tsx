@@ -43,18 +43,6 @@ export default function BasketWrapper({ sizes }: { sizes: number[] }) {
             />
           </Transition.Child>
 
-          {/* <Transition.Child
-            as={Fragment}
-            enter="duration-300"
-            enterFrom="translate-x-full"
-            leave="duration-300"
-            leaveTo="translate-x-full"
-          >
-            <Dialog.Panel>
-              <button></button>
-            </Dialog.Panel>
-          </Transition.Child> */}
-
           <Dialog.Panel>
             <button></button>
           </Dialog.Panel>

@@ -29,11 +29,12 @@ export default function PizzaGrid({ pizzaData }: { pizzaData: PizzaData }) {
           animate="visible"
           className="grid grid-cols-[repeat(auto-fit,minmax(min(230px,100%),1fr))] gap-5"
         >
-          {pizzaData.pizzas.map((pizza) => (
+          {pizzaData.pizzas.map((pizza, index) => (
             <MenuItem
               key={pizza.name}
               pizza={pizza}
               onClick={() => toggleDialog(pizza)}
+              isPriorityImage={index <= 12}
             />
           ))}
         </motion.div>

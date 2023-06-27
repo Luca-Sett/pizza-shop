@@ -41,7 +41,7 @@ export default function Basket({ sizes }: { sizes: number[] }) {
         behavior: "smooth",
       });
     }
-  }, [items]);
+  }, [items, justAdded]);
 
   const totalPrice = gpb.format(
     items.reduce(

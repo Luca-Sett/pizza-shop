@@ -1,9 +1,8 @@
 import { PizzaGroq } from "@/lib/types";
 import { client } from "@/sanity/client";
 import { groq } from "next-sanity";
-import Basket from "./Basket";
+import Image from "next/image";
 import BasketWrapper from "./BasketWrapper";
-import Logo from "./Logo";
 import PizzaGrid from "./PizzaGrid";
 import { BasketProvider } from "./Provider";
 
@@ -60,8 +59,15 @@ export default async function Home() {
   return (
     <BasketProvider>
       <div className="flex flex-col md:pr-[360px]">
-        <header className="bg-off-white grid place-items-center py-14">
-          <Logo />
+        <header className="bg-off-white grid place-items-center py-14 px-10">
+          <Image
+            src="title.svg"
+            alt="Luca's Pizzeria Logo"
+            width="406"
+            height="114"
+            priority
+            className="w-full max-w-sm"
+          />
         </header>
 
         <main className="bg-off-white px-10 pb-[96px] md:pb-[67px] grow">
