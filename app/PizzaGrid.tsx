@@ -1,7 +1,7 @@
 "use client";
 
 import MenuItem from "@/components/MenuItem";
-import { PizzaGridItem } from "@/lib/types";
+import { Pizza, PizzaData } from "@/lib/types";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import PizzaDetails from "./PizzaDetails";
@@ -11,11 +11,11 @@ const staggerVariants = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
-export default function PizzaGrid({ pizzas }: { pizzas: PizzaGridItem[] }) {
-  const [activePizza, setActivePizza] = useState<PizzaGridItem | null>(null);
+export default function PizzaGrid({ pizzaData }: { pizzaData: PizzaData }) {
+  const [activePizza, setActivePizza] = useState(pizzaData.pizzas[0]);
   const [showDialog, setShowDialog] = useState(false);
 
-  const toggleDialog = (pizza: PizzaGridItem) => {
+  const toggleDialog = (pizza: Pizza) => {
     setActivePizza(pizza);
     setShowDialog(!showDialog);
   };
@@ -27,13 +27,12 @@ export default function PizzaGrid({ pizzas }: { pizzas: PizzaGridItem[] }) {
           variants={staggerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-5"
+          className="grid grid-cols-[repeat(auto-fit,minmax(min(230px,100%),1fr))] gap-5"
         >
-          {pizzas.map((pizza, i) => (
+          {pizzaData.pizzas.map((pizza) => (
             <MenuItem
-              key={i}
+              key={pizza.name}
               pizza={pizza}
-              i={i}
               onClick={() => toggleDialog(pizza)}
             />
           ))}
@@ -42,7 +41,8 @@ export default function PizzaGrid({ pizzas }: { pizzas: PizzaGridItem[] }) {
 
       <PizzaDetails
         show={showDialog}
-        pizzaId={activePizza?._id}
+        pizza={activePizza}
+        sizes={pizzaData.sizes}
         onClose={() => setShowDialog(!showDialog)}
       />
     </>

@@ -1,8 +1,8 @@
 "use client";
 
-import { PizzaGridItem } from "@/lib/types";
 import { motion } from "framer-motion";
 import { gpb } from "@/lib/utils";
+import { Pizza } from "@/lib/types";
 
 const variants = {
   hidden: { opacity: 0, scale: 0.8, y: 16 },
@@ -11,16 +11,14 @@ const variants = {
 
 export default function MenuItem({
   pizza,
-  i,
   onClick,
 }: {
-  pizza: PizzaGridItem;
-  i: number;
+  pizza: Pizza;
   onClick: () => void;
 }) {
   return (
     <motion.button
-      className="bg-white rounded-xl p-4 flex flex-col cursor-pointer text-left"
+      className="bg-white rounded-xl p-4 flex flex-col cursor-pointer text-left w-full max-w-sm mx-auto"
       variants={variants}
       whileTap={{ scale: 0.97 }}
       whileHover={{ scale: 1.03 }}
@@ -40,14 +38,14 @@ export default function MenuItem({
           <h3 className="font-semibold w-full">{pizza.name}</h3>
           <div className="flex items-baseline gap-1">
             <span className="font-normal text-xs uppercase">From</span>
-            <span className="font-medium">{gpb.format(pizza.price)}</span>
+            <span className="font-medium">{gpb.format(pizza.prices[0])}</span>
           </div>
         </div>
 
         <div className="flex flex-wrap gap-1.5">
           {pizza.categories.map((category) => (
             <span
-              key={category._id}
+              key={category.name}
               style={{
                 backgroundColor: category.colourBg,
                 color: category.colourFg,

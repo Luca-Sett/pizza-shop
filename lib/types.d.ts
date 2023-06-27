@@ -1,8 +1,20 @@
-export interface PizzaGridItemGroq {
-  _id: string;
+export interface PizzaGroq {
   name: string;
+  ingredients: {
+    name: string;
+    basePrice: number;
+  }[];
   categories: {
-    _id: string;
+    name: string;
+    colourBg: string;
+    colourFg: string;
+  }[];
+}
+
+export interface Pizza {
+  name: string;
+  ingredients: string[];
+  categories: {
     name: string;
     colourBg: string;
     colourFg: string;
@@ -10,30 +22,14 @@ export interface PizzaGridItemGroq {
   prices: number[];
 }
 
-export interface PizzaGridItem {
-  _id: string;
-  name: string;
-  categories: {
-    _id: string;
-    name: string;
-    colourBg: string;
-    colourFg: string;
-  }[];
-  price: number;
+export interface PizzaData {
+  pizzas: Pizza[];
+  sizes: number[];
 }
 
-export default interface PizzaDetailsGroq {
-  _id: string;
-  name: string;
-  categories: {
-    colourBg: string;
-    colourFg: string;
-    _id: string;
-    name: string;
-  }[];
-  ingredients: {
-    _id: string;
-    name: string;
-    basePrice: number;
-  }[];
+export interface PizzaBasketItem {
+  id: number;
+  pizza: Pizza;
+  quantity: number;
+  sizeIndex: number;
 }

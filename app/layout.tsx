@@ -20,7 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head />
-      <body className={`${poppins.className} ${calistoga.variable} text-dark overflow-hidden`}>{children}</body>
+      <body
+        className={`${poppins.className} ${calistoga.variable} text-dark bg-off-white selection:bg-red-fg/25`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
