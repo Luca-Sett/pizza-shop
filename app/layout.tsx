@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>Luca's Pizzeria</title>
+        <title>Luca&apos;s Pizzeria</title>
         <meta
           name="description"
           content="Welcome to Luca's Pizzeria, the Best Pizza Ever! Order for collection or delivery here."
