@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
     success_url: `${origin}/order-complete`,
-    cancel_url: `${origin}`,
+    cancel_url: `${origin}/order`,
     line_items: items.map((item: any) => ({
       price_data: {
         currency: "GBP",

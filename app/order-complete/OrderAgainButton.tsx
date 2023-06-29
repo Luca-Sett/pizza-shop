@@ -8,7 +8,7 @@ export default function OrderAgainButton() {
   useEffect(() => sessionStorage.clear(), []);
 
   return (
-    <Link href="/">
+    <Link href="/order">
       <motion.span
         animate={{ scale: 1 }}
         whileHover={{ scale: 1.05 }}

@@ -1,10 +1,10 @@
 "use client";
 
-import BasketItem from "@/components/BasketItem";
+import BasketItem from "./BasketItem";
 import { getStripe, gpb } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { FormEvent, useContext, useEffect, useRef, useState } from "react";
-import { BasketContext } from "./Provider";
+import { BasketContext } from "./BasketProvider";
 
 export default function Basket({ sizes }: { sizes: number[] }) {
   const scrollable = useRef<HTMLDivElement>(null);
@@ -13,7 +13,7 @@ export default function Basket({ sizes }: { sizes: number[] }) {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    const res = await fetch("/checkout", {
+    const res = await fetch("/api/checkout", {
       method: "POST",
       body: JSON.stringify(
         items.map((item) => ({

@@ -1,10 +1,10 @@
 "use client";
 
-import MenuItem from "@/components/MenuItem";
+import MenuItem from "./MenuItem";
 import { Pizza, PizzaData } from "@/lib/types";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import PizzaDetails from "./PizzaDetails";
+import ItemModal from "./ItemModal";
 
 const staggerVariants = {
   hidden: {},
@@ -40,7 +40,7 @@ export default function PizzaGrid({ pizzaData }: { pizzaData: PizzaData }) {
         </motion.div>
       </div>
 
-      <PizzaDetails
+      <ItemModal
         show={showDialog}
         pizza={activePizza}
         sizes={pizzaData.sizes}

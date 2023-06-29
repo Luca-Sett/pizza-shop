@@ -3,10 +3,7 @@ module.exports = {
   content: ["./app/**/*.tsx", "./components/**/*.tsx"],
   theme: {
     screens: {
-      sm: "425px",
       md: "768px",
-      lg: "1024px",
-      xl: "1440px",
     },
     colors: {
       "off-white": "#F1F2F3",
@@ -23,5 +20,4 @@ module.exports = {
       header: "var(--font-header)",
     },
   },
-  plugins: [],
 };

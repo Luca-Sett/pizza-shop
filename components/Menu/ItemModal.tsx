@@ -5,9 +5,10 @@ import { motion } from "framer-motion";
 import { Fragment, useContext, useEffect, useState } from "react";
 import { Pizza } from "@/lib/types";
 import { gpb } from "@/lib/utils";
-import { BasketContext } from "./Provider";
+import { BasketContext } from "../Basket/BasketProvider";
+import Image from "next/image";
 
-export default function PlaceOrder({
+export default function PizzaDetails({
   show,
   pizza,
   sizes,
@@ -172,9 +173,8 @@ export default function PlaceOrder({
 
                   <motion.button
                     onClick={() => {
-                      addItem({ id, pizza, quantity, sizeIndex });
+                      addItem({ id: Date.now(), pizza, quantity, sizeIndex });
                       onClose();
-                      id++;
                     }}
                     animate={{ scale: 1 }}
                     whileHover={{ scale: 1.05 }}
