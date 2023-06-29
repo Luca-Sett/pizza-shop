@@ -22,13 +22,11 @@ export function BasketProvider({ children }: { children: React.ReactNode }) {
   const [justAdded, setJustAdded] = useState(false);
 
   useEffect(() => {
-    console.log("effect 2");
     const basketInStorage = sessionStorage.getItem("basket");
     if (basketInStorage) setItems(JSON.parse(basketInStorage));
   }, []);
 
   useEffect(() => {
-    console.log("effect 1");
     sessionStorage?.setItem("basket", JSON.stringify(items));
   }, [items]);
 
