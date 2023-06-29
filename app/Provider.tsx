@@ -1,7 +1,7 @@
 "use client";
 
 import { PizzaBasketItem } from "@/lib/types";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const BasketContext = createContext<{
   items: PizzaBasketItem[];
@@ -20,6 +20,17 @@ export const BasketContext = createContext<{
 export function BasketProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<PizzaBasketItem[]>([]);
   const [justAdded, setJustAdded] = useState(false);
+
+  useEffect(() => {
+    console.log("effect 2");
+    const basketInStorage = sessionStorage.getItem("basket");
+    if (basketInStorage) setItems(JSON.parse(basketInStorage));
+  }, []);
+
+  useEffect(() => {
+    console.log("effect 1");
+    sessionStorage?.setItem("basket", JSON.stringify(items));
+  }, [items]);
 
   const addItem = (item: PizzaBasketItem) => {
     setItems([...items, item]);

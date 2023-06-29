@@ -6,9 +6,8 @@ import { Fragment, useContext, useEffect, useState } from "react";
 import { Pizza } from "@/lib/types";
 import { gpb } from "@/lib/utils";
 import { BasketContext } from "./Provider";
-import Image from "next/image";
 
-export default function PizzaDetails({
+export default function PlaceOrder({
   show,
   pizza,
   sizes,
@@ -173,8 +172,9 @@ export default function PizzaDetails({
 
                   <motion.button
                     onClick={() => {
-                      addItem({ id: Date.now(), pizza, quantity, sizeIndex });
+                      addItem({ id, pizza, quantity, sizeIndex });
                       onClose();
+                      id++;
                     }}
                     animate={{ scale: 1 }}
                     whileHover={{ scale: 1.05 }}

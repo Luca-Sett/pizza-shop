@@ -6,6 +6,8 @@ import BasketWrapper from "./BasketWrapper";
 import PizzaGrid from "./PizzaGrid";
 import { BasketProvider } from "./Provider";
 
+export const revalidate = 600;
+
 const fetchPizzaData = async () => {
   const [pizzasData, sizesData] = await Promise.all([
     client.fetch<PizzaGroq[]>(

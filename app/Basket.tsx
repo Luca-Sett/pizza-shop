@@ -1,14 +1,40 @@
 "use client";
 
 import BasketItem from "@/components/BasketItem";
-import { gpb } from "@/lib/utils";
+import { getStripe, gpb } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { useContext, useEffect, useRef, useState } from "react";
+import { FormEvent, useContext, useEffect, useRef, useState } from "react";
 import { BasketContext } from "./Provider";
 
 export default function Basket({ sizes }: { sizes: number[] }) {
   const scrollable = useRef<HTMLDivElement>(null);
   const [scroll, setScroll] = useState(0);
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    const res = await fetch("/checkout", {
+      method: "POST",
+      body: JSON.stringify(
+        items.map((item) => ({
+          name: `${sizes[item.sizeIndex]}" ${item.pizza.name}`,
+          quantity: item.quantity,
+          price: Math.round(item.pizza.prices[item.sizeIndex] * 100),
+        }))
+      ),
+    });
+
+    const data = await res.json();
+
+    if (data.error) {
+      console.log(data.error);
+      return;
+    }
+
+    const stripe = await getStripe();
+    const { error } = await stripe!.redirectToCheckout({ sessionId: data.id });
+    console.warn(error.message);
+  };
 
   const { items, updateItem, removeItem, justAdded } =
     useContext(BasketContext);
@@ -115,6 +141,7 @@ export default function Basket({ sizes }: { sizes: number[] }) {
               animate={{ scale: 1 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 1 }}
+              onClick={handleSubmit}
               className="text-white bg-red py-2 rounded-lg"
             >
               Order
