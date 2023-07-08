@@ -31,7 +31,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${poppins.className} ${calistoga.variable} text-dark bg-off-white selection:bg-red-fg/25`}
+        className={`${poppins.className} ${calistoga.variable} bg-off-white text-dark selection:bg-red-fg/25`}
       >
         {children}
       </body>

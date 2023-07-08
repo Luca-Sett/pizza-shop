@@ -17,30 +17,30 @@ export default function MenuItem({
   return (
     <LayoutGroup id={pizza.name}>
       <button
-        className="bg-white rounded-xl p-4 flex flex-col cursor-pointer text-left w-full max-w-sm mx-auto h-full"
+        className="mx-auto flex h-full w-full max-w-sm cursor-pointer flex-col rounded-xl bg-white p-4 text-left"
         type="button"
         onClick={onClick}
       >
-        <motion.div layout>
+        <motion.div layout className="w-full">
           <Image
             src="/margherita.webp"
             alt={pizza.name}
             width="320"
             height="221"
             priority={isPriorityImage}
-            className="rounded-lg mb-3 w-full"
+            className="mb-3 w-full rounded-lg"
           />
         </motion.div>
-        <div className="flex flex-col justify-between h-full w-full">
-          <div className="flex gap-3 mb-3">
-            <motion.h3 layoutId="pizzaName" className="font-semibold w-full">
+        <div className="flex h-full w-full flex-col justify-between">
+          <div className="mb-3 flex gap-3">
+            <motion.h3 layoutId="pizzaName" className="w-full font-semibold">
               {pizza.name}
             </motion.h3>
             <motion.div
               layoutId="pizzaPrice"
               className="flex items-baseline gap-1"
             >
-              <span className="font-normal text-xs uppercase">From</span>
+              <span className="text-xs font-normal uppercase">From</span>
               <span className="font-medium">{gpb.format(pizza.prices[0])}</span>
             </motion.div>
           </div>
@@ -52,7 +52,7 @@ export default function MenuItem({
                   backgroundColor: category.colourBg,
                   color: category.colourFg,
                 }}
-                className="font-semibold text-[0.6875rem] uppercase rounded px-1.5 py-0.5"
+                className="rounded px-1.5 py-0.5 text-[0.6875rem] font-semibold uppercase"
               >
                 {category.name}
               </span>

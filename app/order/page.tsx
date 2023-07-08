@@ -70,11 +70,11 @@ export default async function Home() {
   return (
     <BasketProvider>
       <div className="flex flex-col md:pr-[360px]">
-        <header className="bg-off-white grid place-items-center py-14 px-10">
+        <header className="grid place-items-center bg-off-white px-10 py-14">
           <Logo />
         </header>
 
-        <main className="bg-off-white px-10 pb-[96px] md:pb-[67px] grow">
+        <main className="grow bg-off-white px-10 pb-[96px] md:pb-[67px]">
           <MenuGrid pizzaData={pizzaData} />
         </main>
       </div>

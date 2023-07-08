@@ -4,17 +4,17 @@ import OrderNowButton from "./OrderNowButton";
 
 export default function Home() {
   return (
-    <div className="px-10 py-14 overflow-hidden min-h-[100dvh]">
-      <header className="bg-off-white grid place-items-center mb-10 md:mb-20">
+    <div className="min-h-[100dvh] overflow-hidden px-10 py-14">
+      <header className="mb-10 grid place-items-center bg-off-white md:mb-20">
         <Logo />
       </header>
 
-      <div className="max-w-5xl mx-auto">
-        <main className="bg-white rounded-3xl p-8 pb-16 relative max-w-sm mx-auto md:min-w-[600px] md:w-full md:max-w-[80%] md:mx-0 md:p-12 md:pr-40">
+      <div className="mx-auto max-w-5xl">
+        <main className="relative mx-auto max-w-sm rounded-3xl bg-white p-8 pb-16 md:mx-0 md:w-full md:min-w-[600px] md:max-w-[80%] md:p-12 md:pr-40">
           <div className="flex flex-col gap-8">
-            <h1 className="font-semibold text-4xl md:text-5xl">
+            <h1 className="text-4xl font-semibold md:text-5xl">
               Try the{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red to-[#f68b55]">
+              <span className="bg-gradient-to-r from-red to-[#f68b55] bg-clip-text text-transparent">
                 Best Pizza Ever
               </span>{" "}
               Today.
@@ -27,7 +27,7 @@ export default function Home() {
             <OrderNowButton />
           </div>
 
-          <div className="absolute bottom-[-418px] left-0 right-0 grid justify-center md:block md:-top-8 md:-bottom-8 md:left-[calc(100%-9rem)] md:right-auto md:aspect-square">
+          <div className="absolute bottom-[-418px] left-0 right-0 grid justify-center md:-bottom-8 md:-top-8 md:left-[calc(100%-9rem)] md:right-auto md:block md:aspect-square">
             <Image
               src="/homeImage.png"
               alt="Delicious Pizza"

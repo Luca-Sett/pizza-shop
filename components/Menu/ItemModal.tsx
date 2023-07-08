@@ -57,18 +57,18 @@ export default function ItemModal({
         >
           <Dialog.Panel className="fixed inset-0 grid place-items-center">
             <div className="w-full max-w-md">
-              <div className="flex flex-col gap-4 bg-white rounded-2xl p-6 m-4 max-h-[calc(100dvh-2rem)] overflow-auto">
+              <div className="m-4 flex max-h-[calc(100dvh-2rem)] flex-col gap-4 overflow-auto rounded-2xl bg-white p-6">
                 <Image
                   src="/margherita.webp"
                   alt={pizza.name}
                   width="320"
                   height="221"
-                  className="rounded-lg w-full"
+                  className="w-full rounded-lg"
                 />
 
                 <div>
                   <Dialog.Title as={Fragment}>
-                    <h3 className="text-2xl font-semibold w-full">
+                    <h3 className="w-full text-2xl font-semibold">
                       {pizza.name}
                     </h3>
                   </Dialog.Title>
@@ -84,7 +84,7 @@ export default function ItemModal({
                             backgroundColor: category.colourBg,
                             color: category.colourFg,
                           }}
-                          className="font-semibold text-[0.6875rem] uppercase rounded px-1.5 py-0.5"
+                          className="rounded px-1.5 py-0.5 text-[0.6875rem] font-semibold uppercase"
                         >
                           {category.name}
                         </span>
@@ -96,7 +96,7 @@ export default function ItemModal({
                     {pizza.ingredients.map((ingredient) => (
                       <span
                         key={ingredient}
-                        className="font-semibold text-[0.6875rem] uppercase rounded px-1.5 py-0.5 bg-black/10"
+                        className="rounded bg-black/10 px-1.5 py-0.5 text-[0.6875rem] font-semibold uppercase"
                       >
                         {ingredient}
                       </span>
@@ -105,7 +105,7 @@ export default function ItemModal({
                 </div>
 
                 <div
-                  className="grid bg-black/10 rounded-lg p-1 font-semibold text-lg"
+                  className="grid rounded-lg bg-black/10 p-1 text-lg font-semibold"
                   style={{
                     gridTemplateColumns: `repeat(${sizes.length}, 1fr)`,
                   }}
@@ -120,19 +120,19 @@ export default function ItemModal({
                       {sizeIndex === index && (
                         <motion.div
                           layoutId="sizeIndicator"
-                          className="absolute inset-0 bg-white rounded z-0"
+                          className="absolute inset-0 z-0 rounded bg-white"
                         />
                       )}
                     </button>
                   ))}
                 </div>
 
-                <div className="grid grid-cols-3 h-16 font-semibold text-lg">
+                <div className="grid h-16 grid-cols-3 text-lg font-semibold">
                   <motion.button
                     animate={{ scale: 1 }}
                     whileHover={{ scale: quantity === 1 ? 1 : 1.05 }}
                     whileTap={{ scale: quantity === 1 ? 1 : 0.95 }}
-                    className="transition-opacity px-2 py-[3px] bg-black/10 rounded-lg disabled:opacity-40 select-none"
+                    className="select-none rounded-lg bg-black/10 px-2 py-[3px] transition-opacity disabled:opacity-40"
                     onClick={() => setQuantity(quantity - 1)}
                     disabled={quantity === 1}
                   >
@@ -140,7 +140,7 @@ export default function ItemModal({
                   </motion.button>
 
                   <input
-                    className="text-center w-1/2 mx-auto"
+                    className="mx-auto w-1/2 text-center"
                     type="number"
                     min={1}
                     value={quantity}
@@ -151,14 +151,14 @@ export default function ItemModal({
                     animate={{ scale: 1 }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-2 py-[3px] bg-black/10 rounded-lg select-none"
+                    className="select-none rounded-lg bg-black/10 px-2 py-[3px]"
                     onClick={() => setQuantity(quantity + 1)}
                   >
                     +
                   </motion.button>
                 </div>
 
-                <div className="text-2xl font-medium text-center">{price}</div>
+                <div className="text-center text-2xl font-medium">{price}</div>
 
                 <div className="flex flex-wrap gap-4 font-semibold">
                   <motion.button
@@ -166,7 +166,7 @@ export default function ItemModal({
                     animate={{ scale: 1 }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-max grow bg-red-bg text-red-fg py-2 rounded-lg uppercase px-4 text-sm"
+                    className="w-max grow rounded-lg bg-red-bg px-4 py-2 text-sm uppercase text-red-fg"
                   >
                     Cancel
                   </motion.button>
@@ -179,7 +179,7 @@ export default function ItemModal({
                     animate={{ scale: 1 }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-max grow text-white bg-red py-2 rounded-lg uppercase px-4 text-sm"
+                    className="w-max grow rounded-lg bg-red px-4 py-2 text-sm uppercase text-white"
                   >
                     Add to Basket
                   </motion.button>

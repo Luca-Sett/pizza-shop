@@ -86,8 +86,8 @@ export default function Basket({ sizes }: { sizes: number[] }) {
   );
 
   return (
-    <div className="md:p-8 md:pl-0 h-full">
-      <div className="grid grid-rows-[auto_1fr_auto] h-full bg-white md:rounded-2xl overflow-hidden">
+    <div className="h-full md:p-8 md:pl-0">
+      <div className="grid h-full grid-rows-[auto_1fr_auto] overflow-hidden bg-white md:rounded-2xl">
         <div
           className="flex flex-col gap-1 p-8 transition-shadow"
           style={{
@@ -95,9 +95,9 @@ export default function Basket({ sizes }: { sizes: number[] }) {
               scroll > 0.01 ? "0 0 20px #00000010" : "0 0 20px #00000000",
           }}
         >
-          <div className="bg-dark h-0.5 rounded"></div>
-          <h2 className="uppercase font-semibold text-center">Basket</h2>
-          <div className="bg-dark h-0.5 rounded"></div>
+          <div className="h-0.5 rounded bg-dark"></div>
+          <h2 className="text-center font-semibold uppercase">Basket</h2>
+          <div className="h-0.5 rounded bg-dark"></div>
         </div>
 
         <motion.div
@@ -116,7 +116,7 @@ export default function Basket({ sizes }: { sizes: number[] }) {
                   layout: { type: "spring", bounce: 0.2, duration: 0.6 },
                 }}
                 key={item.id}
-                className="bg-off-white rounded-lg p-4 flex flex-col gap-4"
+                className="flex flex-col gap-4 rounded-lg bg-off-white p-4"
               >
                 <BasketItem
                   item={item}
@@ -145,15 +145,15 @@ export default function Basket({ sizes }: { sizes: number[] }) {
         >
           <form
             onSubmit={handleSubmit}
-            className="grid grid-cols-2 bg-red/10 font-semibold text-lg rounded-lg"
+            className="grid grid-cols-2 rounded-lg bg-red/10 text-lg font-semibold"
           >
-            <div className="text-red py-2 text-center">{totalPrice}</div>
+            <div className="py-2 text-center text-red">{totalPrice}</div>
             <motion.button
               animate={{ scale: 1 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 1 }}
               type="submit"
-              className="text-white bg-red py-2 rounded-lg grid place-items-center"
+              className="grid place-items-center rounded-lg bg-red py-2 text-white"
             >
               {isLoading ? (
                 <span className="material-symbols-rounded animate-spin">

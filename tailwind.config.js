@@ -21,4 +21,5 @@ module.exports = {
       header: "var(--font-header)",
     },
   },
+  plugins: [require("@tailwindcss/container-queries")],
 };

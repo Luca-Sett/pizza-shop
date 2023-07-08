@@ -32,10 +32,10 @@ export default function MenuGrid({ pizzaData }: { pizzaData: PizzaData }) {
 
   return (
     <>
-      <div className="max-w-6xl mx-auto">
+      <div className="mx-auto max-w-6xl @container">
         {pizzaData.categories.length > 0 && (
-          <div className="mb-4 bg-white p-4 rounded-xl">
-            <div className="font-semibold text-sm uppercase mb-2">
+          <div className="mx-auto mb-4 max-w-sm rounded-xl bg-white p-4 @[480px]:max-w-none">
+            <div className="mb-2 text-sm font-semibold uppercase">
               Filter by Category
             </div>
             <div className="flex flex-wrap gap-2">
@@ -54,7 +54,7 @@ export default function MenuGrid({ pizzaData }: { pizzaData: PizzaData }) {
                         ? category.colourFg
                         : "",
                   }}
-                  className="transition-colors duration-100 font-semibold text-xs uppercase rounded px-2 py-[3px] bg-black/10"
+                  className="rounded bg-black/10 px-2 py-[3px] text-xs font-semibold uppercase transition-colors duration-100"
                 >
                   {category.name}
                 </button>

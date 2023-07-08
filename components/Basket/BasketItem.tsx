@@ -22,7 +22,7 @@ export default function BasketItem({
   return (
     <>
       <h3 className="font-semibold">{item.pizza.name}</h3>
-      <div className="flex flex-col gap-2 font-medium text-sm">
+      <div className="flex flex-col gap-2 text-sm font-medium">
         <div className="flex justify-between">
           <span>Size</span>
           <div
@@ -35,13 +35,13 @@ export default function BasketItem({
               <button
                 key={index}
                 onClick={() => updateSizeIndex(index)}
-                className="px-2 py-[3px] relative"
+                className="relative px-2 py-[3px]"
               >
                 <span className="relative z-10">{size}&rdquo;</span>
                 {item.sizeIndex === index && (
                   <motion.div
                     layoutId={`sizeIndicator-${item.id}`}
-                    className="absolute inset-0 bg-black/10 rounded z-0"
+                    className="absolute inset-0 z-0 rounded bg-black/10"
                   />
                 )}
               </button>
@@ -55,20 +55,20 @@ export default function BasketItem({
               animate={{ scale: 1 }}
               whileHover={{ scale: item.quantity === 1 ? 1 : 1.05 }}
               whileTap={{ scale: item.quantity === 1 ? 1 : 0.95 }}
-              className="transition-opacity px-2 py-[3px] bg-black/10 rounded disabled:opacity-40"
+              className="rounded bg-black/10 px-2 py-[3px] transition-opacity disabled:opacity-40"
               disabled={item.quantity === 1}
               onClick={() => updateQuantity(item.quantity - 1)}
             >
               -
             </motion.button>
-            <div className="w-4 text-center py-[3px] rounded">
+            <div className="w-4 rounded py-[3px] text-center">
               {item.quantity}
             </div>
             <motion.button
               animate={{ scale: 1 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-2 py-[3px] bg-black/10 rounded"
+              className="rounded bg-black/10 px-2 py-[3px]"
               onClick={() => updateQuantity(item.quantity + 1)}
             >
               +
@@ -81,7 +81,7 @@ export default function BasketItem({
           animate={{ scale: 1 }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="px-2 py-0.5 text-sm uppercase rounded bg-red-bg text-red-fg"
+          className="rounded bg-red-bg px-2 py-0.5 text-sm uppercase text-red-fg"
           onClick={removeItem}
         >
           Remove

@@ -13,13 +13,14 @@ export default function BasketWrapper({ sizes }: { sizes: number[] }) {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="md:hidden fixed bottom-0 w-full bg-white uppercase font-semibold py-4 shadow-[0_0_1rem_#00000030]"
+        type="button"
+        className="fixed bottom-0 w-full bg-white py-4 font-semibold uppercase shadow-[0_0_1rem_#00000030] md:hidden"
       >
         View Basket
       </button>
 
       <aside
-        className={`transition-transform duration-300 fixed top-0 bottom-0 right-0 w-5/6 max-w-[360px] md:w-full z-20 md:z-0 ${
+        className={`fixed bottom-0 right-0 top-0 z-20 w-5/6 max-w-[360px] transition-transform duration-300 md:z-0 md:w-full ${
           open ? "translate-x-0" : "translate-x-full md:translate-x-0"
         }`}
       >
@@ -38,7 +39,7 @@ export default function BasketWrapper({ sizes }: { sizes: number[] }) {
             leaveTo="opacity-0"
           >
             <div
-              className="md:hidden fixed inset-0 bg-black/20"
+              className="fixed inset-0 bg-black/20 md:hidden"
               aria-hidden="true"
             />
           </Transition.Child>
