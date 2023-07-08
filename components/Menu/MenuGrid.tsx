@@ -63,7 +63,7 @@ export default function MenuGrid({ pizzaData }: { pizzaData: PizzaData }) {
           </div>
         )}
 
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(230px,100%),1fr))] gap-5">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(min(230px,100%),1fr))] gap-5">
           <AnimatePresence mode="popLayout">
             {filteredPizzas.map((pizza, index) => (
               <motion.div
