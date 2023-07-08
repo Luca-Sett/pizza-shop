@@ -1,19 +1,11 @@
-import Image from "next/image";
+import Logo from "@/components/Logo";
 import OrderAgainButton from "./OrderAgainButton";
 
 export default function OrderComplete() {
-
   return (
     <>
       <header className="bg-off-white grid place-items-center py-14 px-10">
-        <Image
-          src="title.svg"
-          alt="Luca's Pizzeria Logo"
-          width="406"
-          height="114"
-          priority
-          className="w-full max-w-sm"
-        />
+        <Logo />
       </header>
       <main>
         <h1 className="text-2xl font-semibold text-center mb-4">

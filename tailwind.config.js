@@ -6,6 +6,7 @@ module.exports = {
       md: "768px",
     },
     colors: {
+      transparent: "transparent",
       "off-white": "#F1F2F3",
       white: "#FFFFFF",
       dark: "#181818",

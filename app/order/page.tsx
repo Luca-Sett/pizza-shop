@@ -1,10 +1,10 @@
-import { PizzaGroq } from "@/lib/types";
+import { Category, PizzaGroq } from "@/lib/types";
 import { client } from "@/lib/sanity/client";
 import { groq } from "next-sanity";
-import Image from "next/image";
 import BasketWrapper from "@/components/Basket/BasketWrapper";
 import MenuGrid from "@/components/Menu/MenuGrid";
 import { BasketProvider } from "@/components/Basket/BasketProvider";
+import Logo from "@/components/Logo";
 
 export const revalidate = 600;
 
@@ -52,7 +52,16 @@ const fetchPizzaData = async () => {
 
   const sizes = sizesData.map((sizeData) => sizeData.size);
 
-  return { pizzas: pizzasWithPrices, sizes };
+  const categories: Category[] = [];
+  for (const pizza of pizzasWithPrices) {
+    for (const newCategory of pizza.categories) {
+      if (!categories.find((category) => category.name === newCategory.name)) {
+        categories.push(newCategory);
+      }
+    }
+  }
+
+  return { pizzas: pizzasWithPrices, sizes, categories };
 };
 
 export default async function Home() {
@@ -62,14 +71,7 @@ export default async function Home() {
     <BasketProvider>
       <div className="flex flex-col md:pr-[360px]">
         <header className="bg-off-white grid place-items-center py-14 px-10">
-          <Image
-            src="title.svg"
-            alt="Luca's Pizzeria Logo"
-            width="406"
-            height="114"
-            priority
-            className="w-full max-w-sm"
-          />
+          <Logo />
         </header>
 
         <main className="bg-off-white px-10 pb-[96px] md:pb-[67px] grow">

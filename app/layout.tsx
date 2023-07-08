@@ -25,6 +25,10 @@ export default function RootLayout({
           name="description"
           content="Welcome to Luca's Pizzeria, the Best Pizza Ever! Order for collection or delivery here."
         />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,700,0,200"
+        />
       </head>
       <body
         className={`${poppins.className} ${calistoga.variable} text-dark bg-off-white selection:bg-red-fg/25`}

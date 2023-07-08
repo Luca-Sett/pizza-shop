@@ -8,7 +8,7 @@ import { gpb } from "@/lib/utils";
 import { BasketContext } from "../Basket/BasketProvider";
 import Image from "next/image";
 
-export default function PizzaDetails({
+export default function ItemModal({
   show,
   pizza,
   sizes,

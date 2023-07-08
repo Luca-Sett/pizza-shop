@@ -4,27 +4,20 @@ export interface PizzaGroq {
     name: string;
     basePrice: number;
   }[];
-  categories: {
-    name: string;
-    colourBg: string;
-    colourFg: string;
-  }[];
+  categories: Category[];
 }
 
 export interface Pizza {
   name: string;
   ingredients: string[];
-  categories: {
-    name: string;
-    colourBg: string;
-    colourFg: string;
-  }[];
+  categories: Category[];
   prices: number[];
 }
 
 export interface PizzaData {
   pizzas: Pizza[];
   sizes: number[];
+  categories: Category[];
 }
 
 export interface PizzaBasketItem {
@@ -32,4 +25,10 @@ export interface PizzaBasketItem {
   pizza: Pizza;
   quantity: number;
   sizeIndex: number;
+}
+
+export interface Category {
+  name: string;
+  colourBg: string;
+  colourFg: string;
 }

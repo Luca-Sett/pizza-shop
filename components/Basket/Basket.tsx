@@ -10,8 +10,14 @@ export default function Basket({ sizes }: { sizes: number[] }) {
   const scrollable = useRef<HTMLDivElement>(null);
   const [scroll, setScroll] = useState(0);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (items.length === 0) return alert("Basket is empty");
+
+    setIsLoading(true);
 
     const res = await fetch("/api/checkout", {
       method: "POST",
@@ -28,12 +34,14 @@ export default function Basket({ sizes }: { sizes: number[] }) {
 
     if (data.error) {
       console.log(data.error);
+      setIsLoading(false);
       return;
     }
 
     const stripe = await getStripe();
     const { error } = await stripe!.redirectToCheckout({ sessionId: data.id });
     console.warn(error.message);
+    setIsLoading(false);
   };
 
   const { items, updateItem, removeItem, justAdded } =
@@ -135,18 +143,27 @@ export default function Basket({ sizes }: { sizes: number[] }) {
                 : "0 0 20px #00000000",
           }}
         >
-          <div className="grid grid-cols-2 bg-red/10 font-semibold text-lg rounded-lg">
+          <form
+            onSubmit={handleSubmit}
+            className="grid grid-cols-2 bg-red/10 font-semibold text-lg rounded-lg"
+          >
             <div className="text-red py-2 text-center">{totalPrice}</div>
             <motion.button
               animate={{ scale: 1 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 1 }}
-              onClick={handleSubmit}
-              className="text-white bg-red py-2 rounded-lg"
+              type="submit"
+              className="text-white bg-red py-2 rounded-lg grid place-items-center"
             >
-              Order
+              {isLoading ? (
+                <span className="material-symbols-rounded animate-spin">
+                  progress_activity
+                </span>
+              ) : (
+                "Order"
+              )}
             </motion.button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
