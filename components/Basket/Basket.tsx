@@ -23,9 +23,9 @@ export default function Basket({ sizes }: { sizes: number[] }) {
       method: "POST",
       body: JSON.stringify(
         items.map((item) => ({
-          name: `${sizes[item.sizeIndex]}" ${item.pizza.name}`,
+          name: item.pizza.name,
+          sizeIndex: item.sizeIndex,
           quantity: item.quantity,
-          price: Math.round(item.pizza.prices[item.sizeIndex] * 100),
         }))
       ),
     });
